@@ -1,7 +1,7 @@
-# React Native TypeScript Template
+# Minesweeper
 
 ## Description
-* Template react native typescript project with Redux, Saga, React Navigation.
+* Simple minesweeper application in react native
 
 ## How to run
 * Clone this project.
@@ -14,10 +14,3 @@
 
 ## Features
 * Using typescript.
-* Regularly update the library to the latest version.
-* Routing with React Navigation (DrawerNavigator, StackNavigator).
-* Fetch simple GitHub REST API with apisauce.
-* Apply flow with Redux pattern.
-
-## Gifs
-![default](gif/iosRecord.gif) ![default](gif/androidRecord.gif)
