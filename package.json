@@ -16,6 +16,7 @@
     "@react-navigation/drawer": "^5.0.7",
     "@react-navigation/native": "^5.0.7",
     "@react-navigation/stack": "^5.0.8",
+    "@reduxjs/toolkit": "^1.8.1",
     "@types/node": "^17.0.29",
     "@ui-kitten/components": "^5.1.2",
     "apisauce": "^1.1.1",

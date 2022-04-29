@@ -1,48 +1,30 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Text, View, ScrollView } from 'react-native';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
+import Field from '../Field/Field';
 import styles from './Game.Style';
-import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
-import { ws } from '../Helpers/webSocket';
 
-const Game = (props: any) => {
+const Game = () => {
+    const fields = useSelector((state: RootState) => state.game.fields);
+    const lost = useSelector((state: RootState) => state.game.lost);
+    const win = useSelector((state: RootState) => state.game.win);
 
-    const open = (row: number, column: number) => {
-        ws.send(`open ${column} ${row}`);
-    }
-
-    return (
+    return (console.log(fields),
+    
         <ScrollView style={styles.verticalScroll}>
             <ScrollView style={styles.horizontalScroll} horizontal>
                 <View style={styles.mainContainer}>
-                    {props && props.fields && props.fields.map((row: any, indexRow: number) => {
+                    {fields && fields.map((row: any, indexRow: number) => {
                         return <View style={styles.row} key={indexRow}>
-                            {row.map((element: any, indexElement: number) => {
-                                if (element === '□') {
-                                    return <TouchableOpacity onPress={() => open(indexRow, indexElement)} style={styles.field} key={indexElement}></TouchableOpacity>
-                                } else if (element === '*') {
-                                    return <View style={styles.field} key={indexElement}>
-                                        <Text style={styles.centerText}>*</Text>
-                                    </View>
-                                } else {
-                                    return <View style={styles.field} key={indexElement}>
-                                        <Text style={styles.centerText}>{element}</Text>
-                                    </View>
-                                }
-                            })}
+                            {row.map((element: any, indexElement: number) => <Field key={indexElement} element={element} indexRow={indexRow} indexElement={indexElement} />)}
                         </View>
                     })}
-                    {props.lost && <Text>You lost</Text>}
-                    {props.win && <Text>You win</Text>}
+                    {lost && <Text>You lost. Choose new game level!</Text>}
+                    {win && <Text>You win. Choose new game level!</Text>}
                 </View>
             </ScrollView>
         </ScrollView>
     );
 }
-
-const mapStateToProps = (state: { game: any; }) => ({
-    fields: state.game.fields,
-    lost: state.game.lost,
-    win: state.game.win
-});
-
-export default connect(mapStateToProps, null)(Game)
+export default Game;

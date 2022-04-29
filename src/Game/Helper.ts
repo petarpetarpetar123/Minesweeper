@@ -1,8 +1,3 @@
 export const normalizeApiData = (data: string) => {
-    const first = data.replace('map:', '');
-    const second = first.substring(1, first.length-1);
-    const third = second.split("\n");
-    const forth = third.map(element => Array.from(element));
-
-    return forth;
+    return data.replace('map:', '').substring(1, data.length-1).split("\n").map(element => Array.from(element));
 }

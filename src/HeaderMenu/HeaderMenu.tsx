@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Level.Style';
 import { Button, View } from 'react-native';
-import { ws } from '../Helpers/webSocket';
+import { ws } from '../app/webSocket';
+import styles from './HeaderMenu.Style';
 
-const Level = () => {
+const HeaderMenu = () => {
 
     const startGame = (level: String) => {
         ws.send(`new ${level}`);
@@ -19,4 +19,4 @@ const Level = () => {
     );
 }
 
-export default (Level);
+export default HeaderMenu;
